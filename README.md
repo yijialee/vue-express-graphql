@@ -13,4 +13,28 @@ express lee-express
 # 5 copy files in "lee-express" to "server" folder
 # 6 copy files in "lee-vue/src" to "client" folder. then copy the folders and files left to root of "lee" folder
 # 7 edit package.json
-# 8 edit "build/webpack.prod.conf.js"
+modify script
+```
+"scripts": {
+    "server": "nodemon index.js",
+    "client": "node build/build.js"
+  }
+```
+# 8 edit "config/index.js"
+modify index assetsRoot assetsSubDirectory assetsPublicPath 
+```
+    index: path.resolve(__dirname, '../src/server/public/index.html'),//'../dist/index.html'),
+    assetsRoot: path.resolve(__dirname, '../src/server/public/'),
+    assetsSubDirectory:  './static/' ,//'static',
+    assetsPublicPath: './' ,//'/',
+```
+
+# 9 edit "webpack.base.conf.js"
+modify output
+```
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: '/'
+  },
+```
